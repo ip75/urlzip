@@ -10,9 +10,8 @@ import (
 )
 
 func RaiseHanders(g *gin.Engine, uz core.IUrlZip) {
-	g.POST("/:src", func(c *gin.Context) {
-		longPath := c.Param("src")
-		shortPath, err := uz.ComposeShortURL(longPath)
+	g.POST("/*uri", func(c *gin.Context) {
+		shortPath, err := uz.ComposeShortURL(c.Request.RequestURI)
 		if err != nil {
 			c.JSON(http.StatusOK, gin.H{"error": err.Error()})
 			return
@@ -40,7 +39,7 @@ func RaiseHanders(g *gin.Engine, uz core.IUrlZip) {
 			return
 		}
 
-		c.Redirect(http.StatusMovedPermanently, "/"+orig)
+		c.Redirect(http.StatusMovedPermanently, orig)
 	})
 
 }

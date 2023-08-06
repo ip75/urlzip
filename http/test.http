@@ -1,9 +1,9 @@
 ### generate short url
-POST http://localhost:20000/full_path?next=1
+POST http://localhost:20000/test/full_path?next=1
 accept: application/json
 Content-Type: application/json
 
 ### redirect to the full url by short one
-GET http://localhost:20000/RC7a2axt3td
+GET http://localhost:20000/xv68ha8vso
 accept: application/json
 Content-Type: application/json
